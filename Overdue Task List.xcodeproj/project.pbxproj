@@ -24,6 +24,7 @@
 		7E84006419576FCB00D1815D /* JMAddTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E84006319576FCB00D1815D /* JMAddTaskViewController.m */; };
 		7E84006719576FFD00D1815D /* JMDetailTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E84006619576FFD00D1815D /* JMDetailTaskViewController.m */; };
 		7E84006A1957701600D1815D /* JMEditTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E8400691957701600D1815D /* JMEditTaskViewController.m */; };
+		7E84006E19577FCD00D1815D /* JMTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E84006D19577FCD00D1815D /* JMTask.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,8 @@
 		7E84006619576FFD00D1815D /* JMDetailTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMDetailTaskViewController.m; sourceTree = "<group>"; };
 		7E8400681957701600D1815D /* JMEditTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMEditTaskViewController.h; sourceTree = "<group>"; };
 		7E8400691957701600D1815D /* JMEditTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMEditTaskViewController.m; sourceTree = "<group>"; };
+		7E84006C19577FCD00D1815D /* JMTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMTask.h; sourceTree = "<group>"; };
+		7E84006D19577FCD00D1815D /* JMTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMTask.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +135,7 @@
 				7E84006619576FFD00D1815D /* JMDetailTaskViewController.m */,
 				7E8400681957701600D1815D /* JMEditTaskViewController.h */,
 				7E8400691957701600D1815D /* JMEditTaskViewController.m */,
+				7E84006B19577F5200D1815D /* Model */,
 				7E84004519576F5300D1815D /* Images.xcassets */,
 				7E84003419576F5300D1815D /* Supporting Files */,
 			);
@@ -165,6 +169,15 @@
 				7E84005519576F5300D1815D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7E84006B19577F5200D1815D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7E84006C19577FCD00D1815D /* JMTask.h */,
+				7E84006D19577FCD00D1815D /* JMTask.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +280,7 @@
 				7E84006719576FFD00D1815D /* JMDetailTaskViewController.m in Sources */,
 				7E84003A19576F5300D1815D /* main.m in Sources */,
 				7E84004419576F5300D1815D /* JMViewController.m in Sources */,
+				7E84006E19577FCD00D1815D /* JMTask.m in Sources */,
 				7E84006419576FCB00D1815D /* JMAddTaskViewController.m in Sources */,
 				7E84006A1957701600D1815D /* JMEditTaskViewController.m in Sources */,
 				7E84003E19576F5300D1815D /* JMAppDelegate.m in Sources */,

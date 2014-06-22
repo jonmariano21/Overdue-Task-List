@@ -10,6 +10,15 @@
 #warning "This project uses features only available in iOS SDK 5.0 and later."
 #endif
 
+//DEFINES in PCH file are GLOBAL to all files in our project
+#define TASK_TITLE @"tasktitle"
+#define TASK_DESCRIPTION @"taskdescription"
+#define TASK_DATE @"taskdate"
+#define TASK_COMPLETION @"taskcompletion"
+#define TASK_OBJECTS_KEY @"taskobjectskey"
+
+
+
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
