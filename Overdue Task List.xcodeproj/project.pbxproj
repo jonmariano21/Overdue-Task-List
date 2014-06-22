@@ -21,6 +21,9 @@
 		7E84004F19576F5300D1815D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E84003119576F5300D1815D /* UIKit.framework */; };
 		7E84005719576F5300D1815D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7E84005519576F5300D1815D /* InfoPlist.strings */; };
 		7E84005919576F5300D1815D /* Overdue_Task_ListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E84005819576F5300D1815D /* Overdue_Task_ListTests.m */; };
+		7E84006419576FCB00D1815D /* JMAddTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E84006319576FCB00D1815D /* JMAddTaskViewController.m */; };
+		7E84006719576FFD00D1815D /* JMDetailTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E84006619576FFD00D1815D /* JMDetailTaskViewController.m */; };
+		7E84006A1957701600D1815D /* JMEditTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E8400691957701600D1815D /* JMEditTaskViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,12 @@
 		7E84005419576F5300D1815D /* Overdue Task ListTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Overdue Task ListTests-Info.plist"; sourceTree = "<group>"; };
 		7E84005619576F5300D1815D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7E84005819576F5300D1815D /* Overdue_Task_ListTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Overdue_Task_ListTests.m; sourceTree = "<group>"; };
+		7E84006219576FCB00D1815D /* JMAddTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMAddTaskViewController.h; sourceTree = "<group>"; };
+		7E84006319576FCB00D1815D /* JMAddTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMAddTaskViewController.m; sourceTree = "<group>"; };
+		7E84006519576FFD00D1815D /* JMDetailTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMDetailTaskViewController.h; sourceTree = "<group>"; };
+		7E84006619576FFD00D1815D /* JMDetailTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMDetailTaskViewController.m; sourceTree = "<group>"; };
+		7E8400681957701600D1815D /* JMEditTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMEditTaskViewController.h; sourceTree = "<group>"; };
+		7E8400691957701600D1815D /* JMEditTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMEditTaskViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +126,12 @@
 				7E84003F19576F5300D1815D /* Main.storyboard */,
 				7E84004219576F5300D1815D /* JMViewController.h */,
 				7E84004319576F5300D1815D /* JMViewController.m */,
+				7E84006219576FCB00D1815D /* JMAddTaskViewController.h */,
+				7E84006319576FCB00D1815D /* JMAddTaskViewController.m */,
+				7E84006519576FFD00D1815D /* JMDetailTaskViewController.h */,
+				7E84006619576FFD00D1815D /* JMDetailTaskViewController.m */,
+				7E8400681957701600D1815D /* JMEditTaskViewController.h */,
+				7E8400691957701600D1815D /* JMEditTaskViewController.m */,
 				7E84004519576F5300D1815D /* Images.xcassets */,
 				7E84003419576F5300D1815D /* Supporting Files */,
 			);
@@ -249,8 +264,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E84006719576FFD00D1815D /* JMDetailTaskViewController.m in Sources */,
 				7E84003A19576F5300D1815D /* main.m in Sources */,
 				7E84004419576F5300D1815D /* JMViewController.m in Sources */,
+				7E84006419576FCB00D1815D /* JMAddTaskViewController.m in Sources */,
+				7E84006A1957701600D1815D /* JMEditTaskViewController.m in Sources */,
 				7E84003E19576F5300D1815D /* JMAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
