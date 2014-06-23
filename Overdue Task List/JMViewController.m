@@ -29,6 +29,22 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    /* Access info from NSUserDefaults:
+     * If there is a saved array of info with our task objs into NSUserDefaults, we can access the info
+     * and set equal to the arry taskAsPropertyLists
+     */
+    NSArray *taskAsPropertyLists = [[NSUserDefaults standardUserDefaults] arrayForKey: TASK_OBJECTS_KEY];
+    
+    //Iterate through array
+    for( NSDictionary *dictionary in taskAsPropertyLists ){
+        JMTask *taskObject = [self convertDictToTask: dictionary];//Uses HELPER
+        
+        //Add taskObject to our NSArray
+        [self.taskObjects addObject: taskObject];
+    }
+    
+    
 }
 
 
@@ -105,7 +121,14 @@
     return dictionary;
 }
 
+//Convert Dictionary into a Task OBJ
+-(JMTask *)convertDictToTask: (NSDictionary *)dictionary{
+    
+    JMTask *taskObject = [[JMTask alloc] initWithData: dictionary];//Uses our Custom Initializer
 
+    return taskObject;
+    
+}
 
 
 
