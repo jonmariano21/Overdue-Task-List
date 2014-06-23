@@ -117,7 +117,7 @@
                         <outlet property="dateLabel" destination="yIU-Vv-gak" id="S6T-fF-wor"/>
                         <outlet property="detailLabel" destination="o9u-5U-HLe" id="Der-sV-tzl"/>
                         <outlet property="titleLabel" destination="ksw-2n-VEw" id="tnz-AC-QbH"/>
-                        <segue destination="var-qu-9A7" kind="push" identifier="toEditTaskDetailViewControllerSegue" id="MD7-hc-Rc0"/>
+                        <segue destination="var-qu-9A7" kind="push" identifier="toEditTaskViewControllerSegue" id="MD7-hc-Rc0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Fh-97-hz8" userLabel="First Responder" sceneMemberID="firstResponder"/>

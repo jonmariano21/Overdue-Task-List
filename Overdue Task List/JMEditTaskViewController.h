@@ -7,8 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JMTask.h"
 
-@interface JMEditTaskViewController : UIViewController
+@protocol JMEditViewControllerDelegate <NSObject>
+
+-(void)didSaveTask;
+
+@end
+
+@interface JMEditTaskViewController : UIViewController <UITextViewDelegate, UITextFieldDelegate>
+
+@property (weak, nonatomic) id <JMEditViewControllerDelegate>delegate;
+
+@property (strong, nonatomic) JMTask *task;
 
 @property (strong, nonatomic) IBOutlet UITextField *textField;
 @property (strong, nonatomic) IBOutlet UITextView *textView;

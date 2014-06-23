@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "JMTask.h"
+#import "JMEditTaskViewController.h"
 
-@interface JMDetailTaskViewController : UIViewController
+@protocol JMDetailViewControllerDelegate <NSObject>
+
+-(void)updateTask;
+
+@end
+
+@interface JMDetailTaskViewController : UIViewController <JMEditViewControllerDelegate>//Conform to protocol
+
+@property (weak, nonatomic) id <JMDetailViewControllerDelegate>delegate;
 
 @property (strong, nonatomic) JMTask *task;
 

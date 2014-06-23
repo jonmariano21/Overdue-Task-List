@@ -67,6 +67,7 @@
         JMTask *taskObject = self.taskObjects[path.row];//specific cell user has selected
 
         detailTaskViewController.task = taskObject;
+        detailTaskViewController.delegate = self;
     }
 }
 
@@ -78,9 +79,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+#pragma mark - IBAction
+
 - (IBAction)reorderBarButtonItemPressed:(UIBarButtonItem *)sender {
-    //Create Segue
     
+    if(self.tableView.editing == YES) [self.tableView setEditing: NO animated: YES];
+    else [self.tableView setEditing: YES animated: YES];
     
 }
 
@@ -123,6 +128,16 @@
     [self.tableView reloadData];
     
 }//close didAddTask method
+
+
+#pragma mark - JMDetailTaskViewController Delegate
+
+-(void)updateTask{
+    [self saveTasks];
+    [self.tableView reloadData];
+    
+}
+
 
 #pragma mark - HELPER
 
@@ -175,6 +190,20 @@
     
 }
 
+
+-(void)saveTasks{
+    
+    NSMutableArray *reOrderedArray = [[NSMutableArray alloc] init];
+    
+    for( int x = 0; x < [self.taskObjects count]; x++){
+        [reOrderedArray addObject: [self taskObjectAsPropertyList: self.taskObjects[x]]];
+        
+    }//close forloop
+    
+    [[NSUserDefaults standardUserDefaults] setObject: reOrderedArray forKey:TASK_OBJECTS_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
 
 
 
@@ -259,7 +288,20 @@
     
 }
 
+-(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
 
+//For Reordering Table View cells
+-(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
+    
+    JMTask *taskObject = self.taskObjects[ sourceIndexPath.row ];
+    [self.taskObjects removeObjectAtIndex: sourceIndexPath.row];
+    [self.taskObjects insertObject: taskObject atIndex: destinationIndexPath.row];//Moves to new location
+    
+    [self saveTasks];//HELPER to save reOrdered tasks
+    
+}
 
 
 @end

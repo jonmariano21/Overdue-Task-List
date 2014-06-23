@@ -27,6 +27,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.textField.text = self.task.title;
+    self.textView.text = self.task.description;
+    self.datePicker.date = self.task.date;
+    
+    self.textField.delegate = self;
+    self.textView.delegate = self;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,5 +55,42 @@
 */
 
 - (IBAction)saveBarButtonItemPressed:(UIBarButtonItem *)sender {
+    
+    [self updateTask];
+    [self.delegate didSaveTask];
+    
 }
+
+//HELPER: updates task properties with what we type in the EditVC
+-(void)updateTask{
+    self.task.title = self.textField.text;
+    self.task.description = self.textView.text;
+    self.task.date = self.datePicker.date;
+    
+}
+
+
+
+#pragma mark - UITextField & UITextView Delegate
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [self.textField resignFirstResponder];
+    return YES; //b/c we want user to be able to use return key
+}
+
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    
+    if([text isEqualToString: @"\n"]){
+        [self.textView resignFirstResponder];
+        return NO;
+        
+    }
+    return YES;
+    //NOTE: Assuming user is NOT pasting the return character into textView!!!!! HAcky Solution
+    
+}
+
+
+
 @end

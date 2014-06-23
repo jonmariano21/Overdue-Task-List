@@ -11,7 +11,7 @@
 #import "JMDetailTaskViewController.h"
 
 
-@interface JMViewController : UIViewController <JMAddTaskViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>//conform to protocol, now have access to methods defined in JMAddTaskVC
+@interface JMViewController : UIViewController <JMAddTaskViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, JMDetailViewControllerDelegate>//conform to protocol, now have access to methods defined in JMAddTaskVC
 
 @property (strong, nonatomic) NSMutableArray *taskObjects; //Mutable Array b/c we are adding/deleting tasks
 
