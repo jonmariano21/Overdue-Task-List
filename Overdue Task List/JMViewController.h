@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "JMAddTaskViewController.h"
+#import "JMDetailTaskViewController.h"
+
 
 @interface JMViewController : UIViewController <JMAddTaskViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>//conform to protocol, now have access to methods defined in JMAddTaskVC
 

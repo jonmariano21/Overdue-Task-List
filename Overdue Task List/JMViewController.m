@@ -58,6 +58,16 @@
         JMAddTaskViewController *addTaskViewController = segue.destinationViewController;
         addTaskViewController.delegate = self;
     }
+    
+    else if( [segue.destinationViewController isKindOfClass: [JMDetailTaskViewController class]]){
+        JMDetailTaskViewController *detailTaskViewController = segue.destinationViewController;
+        
+        //Access NSIndexPath that we passed in as sender
+        NSIndexPath *path = sender;
+        JMTask *taskObject = self.taskObjects[path.row];//specific cell user has selected
+
+        detailTaskViewController.task = taskObject;
+    }
 }
 
 
@@ -240,6 +250,12 @@
         [tableView deleteRowsAtIndexPaths: @[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
     
+    
+}
+
+-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
+    
+    [self performSegueWithIdentifier: @"toDetailTaskViewControllerSegue" sender: indexPath];
     
 }
 

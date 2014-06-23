@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JMTask.h"
 
 @interface JMDetailTaskViewController : UIViewController
+
+@property (strong, nonatomic) JMTask *task;
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;

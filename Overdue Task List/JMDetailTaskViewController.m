@@ -27,12 +27,25 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    //Setup UIView elements
+    self.titleLabel.text = self.task.title;
+    self.detailLabel.text = self.task.description;
+    
+    //Have to conver date to string using formatter
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat: @"yyyy-MM-dd"];
+    NSString *stringFromDate = [formatter stringFromDate: self.task.date];
+    
+    self.dateLabel.text = stringFromDate;
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+
 }
 
 /*
