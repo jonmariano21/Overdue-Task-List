@@ -46,9 +46,32 @@
 }
 */
 
+#pragma mark - HELPER
+
+-(JMTask *)returnNewTaskObject{
+    
+    JMTask *taskObject = [[JMTask alloc] init];
+    taskObject.title = self.textField.text;
+    taskObject.description = self.textView.text;
+    taskObject.date = self.datePicker.date;
+    taskObject.isCompleted = NO;//The user isnt going to start with a task already completed
+    
+    return taskObject;
+}
+
+
+
 - (IBAction)addTaskButtonPressed:(UIButton *)sender {
+    
+    [self.delegate didAddTask: [self returnNewTaskObject] ];
+    
 }
 
 - (IBAction)cancelButtonPressed:(UIButton *)sender {
+    
+    [self.delegate didCancel];
 }
+
+
+
 @end
