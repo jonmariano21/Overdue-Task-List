@@ -30,6 +30,9 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
     /* Access info from NSUserDefaults:
      * If there is a saved array of info with our task objs into NSUserDefaults, we can access the info
      * and set equal to the arry taskAsPropertyLists
@@ -130,7 +133,35 @@
     
 }
 
+#pragma mark - UITableViewDataSource
 
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return [self.taskObjects count];//returns the number of elements in our taskObjects MutableArray
+}
 
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    
+    return 1;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: CellIdentifier forIndexPath: indexPath];
+    
+    
+    JMTask *task = self.taskObjects[ indexPath.row ];
+    
+    cell.textLabel.text = task.title;
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *stringFromDate = [formatter stringFromDate: task.date];
+    
+    cell.detailTextLabel.text = stringFromDate;
+    
+    return cell;
+}
 
 @end
