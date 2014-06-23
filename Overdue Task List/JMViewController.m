@@ -133,6 +133,41 @@
     
 }
 
+//Compare if one date is greater than another
+-(BOOL)isDateGreaterThanDate: (NSDate *)date and: (NSDate *)toDate{
+    
+    NSTimeInterval dateInterval = [date timeIntervalSince1970];//timeIntervalSince1970 returns the #of seconds since Jan1,1970
+    NSTimeInterval toDateInterval = [toDate timeIntervalSince1970];
+    
+    if( dateInterval > toDateInterval ) return YES;
+    else return NO;
+}
+
+-(void)updateCompletionOfTask: (JMTask *)task forIndexPath: (NSIndexPath *)indexPath{
+    
+    NSMutableArray *taskObjectsAsPropertyLists = [[[NSUserDefaults standardUserDefaults] arrayForKey: TASK_OBJECTS_KEY] mutableCopy];
+    
+    //Check if there was or WASNT an task object saved
+    if( !taskObjectsAsPropertyLists ) taskObjectsAsPropertyLists = [[NSMutableArray alloc] init];
+    
+    [taskObjectsAsPropertyLists removeObjectAtIndex: indexPath.row];
+    
+    if(task.isCompleted == YES ) task.isCompleted = NO;
+    else task.isCompleted = YES;
+    
+    [taskObjectsAsPropertyLists insertObject: [self taskObjectAsPropertyList: task] atIndex: indexPath.row];
+    
+    [[NSUserDefaults standardUserDefaults] setObject: taskObjectsAsPropertyLists forKey: TASK_OBJECTS_KEY];
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [self.tableView reloadData];//Reload table view
+    
+}
+
+
+
+
 #pragma mark - UITableViewDataSource
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -161,7 +196,27 @@
     
     cell.detailTextLabel.text = stringFromDate;
     
+    BOOL isOverDue = [self isDateGreaterThanDate: [NSDate date] and: task.date ];//[NSDate date] returns current date
+    
+    if( task.isCompleted == YES ) cell.backgroundColor = [UIColor greenColor];
+    else if( isOverDue == YES ) cell.backgroundColor = [UIColor redColor];
+    else cell.backgroundColor = [UIColor yellowColor];
+        
+    
     return cell;
 }
+
+
+#pragma mark - UITableViewDelegate
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    JMTask *task = self.taskObjects[indexPath.row];
+    [self updateCompletionOfTask: task forIndexPath: indexPath];
+    
+}
+
+
+
 
 @end
