@@ -216,6 +216,33 @@
     
 }
 
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return YES;//Yes we can edit the row
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if( editingStyle == UITableViewCellEditingStyleDelete ){
+        [self.taskObjects removeObjectAtIndex: indexPath.row];
+        
+        NSMutableArray *newTaskObjectsData = [[NSMutableArray alloc] init];
+        
+        for(JMTask *task in self.taskObjects){
+            //Convert task obj arg into a Dictionary and put into our NSMutableArray
+            [newTaskObjectsData addObject:[self taskObjectAsPropertyList: task]];//Uses HELPER
+        }
+        
+        //Persist/Save newTaskObjectData array
+        [[NSUserDefaults standardUserDefaults] setObject: newTaskObjectsData forKey: TASK_OBJECTS_KEY];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        [tableView deleteRowsAtIndexPaths: @[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    
+    
+}
+
 
 
 
